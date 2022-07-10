@@ -1,4 +1,6 @@
+Using flat table 
 -- 1. Total amount of sales per city
+
 SELECT * FROM SALEORDERS
 SELECT 
 	CITY,
@@ -138,6 +140,7 @@ JOIN CITIES AS C ON C.ID = A.CITYID
 JOIN TOWNS AS T ON T.ID = A.TOWNID
 JOIN DISTRICTS AS D ON D.ID = A.DISTRICTID
 
+-- Find the cities where total amount of orders were less than 500 in first 10 days of January
 
 SELECT * FROM
 (
