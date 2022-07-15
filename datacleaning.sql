@@ -17,7 +17,7 @@ SET saledate1 = CONVERT(date, SaleDate)
 ALTER TABLE nashville_housing
 DROP COLUMN saledate
 
--- Populate the propertyaddress collumn
+-- Populate the propertyaddress column
 -- when parcel id of the property is the same with other property two properties have the same address. Using this knowledge I will populate the collumn
 
 SELECT  a.PropertyAddress, ISNULL(a.propertyaddress, b.PropertyAddress) 
@@ -35,7 +35,7 @@ ON a.[UniqueID ] != b.[UniqueID ]
 AND a.ParcelID = b.ParcelID
 WHERE a.PropertyAddress is null
 
--- Separating data in the address collumn into different collumns (address, city, state)
+-- Separating data in the address column into different columns (address, city, state)
 
 SELECT
 SUBSTRING(propertyaddress, 1, CHARINDEX (',', PropertyAddress)-1) AS address_,
@@ -58,7 +58,7 @@ SET propertycity = SUBSTRING (propertyaddress, CHARINDEX (',', PropertyAddress)+
 ALTER TABLE nashville_housing
 DROP COLUMN PropertyAddress
 
--- Doing the similar operation on the owneraddress collumn - splitting the collumn into three collumns (address, city and state) 
+-- Doing the similar operation on the owneraddress collumn - splitting the column into three columns (address, city and state) 
 
 SELECT 
 PARSENAME(REPLACE(owneraddress, ',','.'), 3),
@@ -88,7 +88,7 @@ SET ownerstate = PARSENAME(REPLACE(owneraddress, ',','.'), 1)
 ALTER TABLE nashville_housing
 DROP COLUMN OwnerAddress
 
--- Changing the values in the soldasvacant collumn, altering all N and Y to NO and YES
+-- Changing the values in the soldasvacant column, altering all N and Y to NO and YES
 
 SELECT soldasvacant,
 	CASE
