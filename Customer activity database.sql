@@ -14,7 +14,7 @@ FOREIGN KEY(country_id) REFERENCES country(id)
 
 CREATE TABLE report_date(
 id INT PRIMARY KEY AUTO_INCREMENT,
-date DATETIME
+date DATETIME DEFAULT NOW()
 );
 
 CREATE TABLE turnover(
